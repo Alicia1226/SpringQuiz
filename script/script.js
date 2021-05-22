@@ -10,3 +10,7 @@ function paintResults(data1,data2){
 
 }
 paintResults("1","5")
+
+document.getElementById("boton").addEventListener("click",(e)=>{
+    window.location.href="index.html"
+});

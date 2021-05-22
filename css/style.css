@@ -89,6 +89,20 @@ button:hover {
 /*  <--------------@Media queris@------------> */
 
 @media only screen and (min-width: 768px) {
+
+  header {
+    width: 100vw;
+    height: 8rem;
+    background-color: rgb(58, 155, 240);
+  
+  }
+  h1 {
+    font-size: 4.5rem;
+    
+  }
+  h2 {
+    font-size: 2.6rem;
+  }
   .mainCard {
     background-color: whitesmoke;
     border-radius: 0.8rem;
@@ -96,10 +110,14 @@ button:hover {
     margin-top: 2.5rem;
   }
 
+
   .secondCard {
     display: flex;
     
     align-items: center;
     margin: 2.5rem;
+  }
+  .parrafo {
+    font-size: 2.2rem;
   }
 }
