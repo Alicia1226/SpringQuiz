@@ -18,19 +18,44 @@ let addPreguntaToArry = (id,question,correctAns,incorrectAns,)=>{
     preguntas.push(objPregunta); 
 }
 
-let drawQuestion = () =>{
-    let boxPregunta = ;
-    //creacion de elementos
-    let tagInput = document.createElement("input");
-    let tagLabel = document.createElement("label");
-    //colocacion de atributos
-    tagInput.setAttribute("id","qop1");
-    tagInput.setAttribute("type","radio");
-    tagLabel.setAttribute("for","qop1");
-    tagLabel.setAttribute("class","qop1");
-    //appendchild
-
+let randElemnt = (array)=>{
+    let result=[];
+    while(result.length < 4){
+        let random = Math.floor(Math.random() * array.length);
+        let element = array[random];
+        if (result.indexOf(element) == -1)result.push(element)
+    }
+    return result;
 }
+
+
+let drawQuestion = (pregunta) =>{
+        let id = pregunta.id;
+        let pre = pregunta.pregunta;
+        let res = randElemnt(pregunta.respuestas); //array
+        let tituloP = document.querySelector(".pregunta");
+        let boxPregunta = document.querySelector("#qidF");
+        let tagPreg = document.createTextNode(pre);
+        tituloP.appendChild(tagPreg);
+        for (let num=0; num<4;num++){
+            //creacion de elementos
+            let tagInput = document.createElement("input");
+            let tagLabel = document.createElement("label");
+            let tagResp = document.createTextNode(res[num]);
+            
+            //colocacion de atributos
+            tagInput.setAttribute("id",`qop${num}`); //num es un i de recorrido
+            tagInput.setAttribute("type","radio");
+            tagLabel.setAttribute("for",`qop${num}`);
+            tagLabel.setAttribute("class",`qop${num}`);
+
+            //appendchild
+            tagLabel.appendChild(tagResp);
+            boxPregunta.appendChild(tagInput);
+            boxPregunta.appendChild(tagLabel);
+        }
+}
+
 
 questionAPI()
     .then(x => {
@@ -38,4 +63,7 @@ questionAPI()
             addPreguntaToArry(i,e.question,e.correct_answer,e.incorrect_answers)
         })
     })
-    .then( () => console.log(preguntas)) 
+    .then( () => {
+        console.log(preguntas[0]) 
+        drawQuestion(preguntas[0])
+    }) 
