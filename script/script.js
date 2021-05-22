@@ -1,4 +1,6 @@
+let preguntaNum = 0;
 let preguntas = []
+let aciertos = []
 
 //1. hacer un fichero de preguntas y respustas, crear un json
 
@@ -30,13 +32,25 @@ let randElemnt = (array)=>{
 
 
 let drawQuestion = (pregunta) =>{
+        document.querySelector(".pregunta").innerHTML=""
+        if (document.querySelector(".qContenedor")){
+            document.querySelector(".qContenedor").innerHTML="";
+        }
+
         let id = pregunta.id;
         let pre = pregunta.pregunta;
         let res = randElemnt(pregunta.respuestas); //array
         let tituloP = document.querySelector(".pregunta");
-        let boxPregunta = document.querySelector("#qidF");
+        let boxPregunta = document.querySelector(".qContenedor");
+        let tagDivP = document.createElement("div")
         let tagPreg = document.createTextNode(pre);
+
+
+        tagDivP.setAttribute("id",`qidF${id}`);
+        tagDivP.setAttribute("class","qclassFielset");
+        boxPregunta.appendChild(tagDivP);
         tituloP.appendChild(tagPreg);
+        
         for (let num=0; num<4;num++){
             //creacion de elementos
             let tagInput = document.createElement("input");
@@ -51,9 +65,26 @@ let drawQuestion = (pregunta) =>{
 
             //appendchild
             tagLabel.appendChild(tagResp);
-            boxPregunta.appendChild(tagInput);
-            boxPregunta.appendChild(tagLabel);
+            tagDivP.appendChild(tagInput);
+            tagDivP.appendChild(tagLabel);
         }
+
+        let tagBN = document.createTextNode("Siguiente");
+
+        let tagDF = document.createElement("div");
+        tagDF.setAttribute("class","qBoton");
+        
+        let buttonS = document.createElement("button");
+        buttonS.setAttribute("id","boton");
+        buttonS.setAttribute("type","submit");
+        buttonS.appendChild(tagBN);
+
+        tagDF.appendChild(buttonS);
+        tagDivP.appendChild(tagDF);
+
+
+
+
 }
 
 
@@ -63,7 +94,19 @@ questionAPI()
             addPreguntaToArry(i,e.question,e.correct_answer,e.incorrect_answers)
         })
     })
-    .then( () => {
-        console.log(preguntas[0]) 
-        drawQuestion(preguntas[0])
+    .then(() => {
+        console.log(preguntas) 
+        drawQuestion(preguntas[preguntaNum]);
+        document.getElementById("formulario").addEventListener('submit',(event) =>{
+            event.preventDefault();
+
+            if ( preguntaNum < preguntas.length -1){
+                preguntaNum += 1;
+                drawQuestion(preguntas[preguntaNum]);
+            }else{
+                console.log('final')
+            }
+
+        })
     }) 
+
