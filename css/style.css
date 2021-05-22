@@ -48,3 +48,52 @@ button {
   padding: 15px;
   color: whitesmoke;
 }
+
+.qclassFielset{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.qContenedor{
+  margin-bottom: 15px;
+}
+
+input[type="radio"]{
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+.qclassFielset label{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+label{
+  padding-top:16px;
+  padding-bottom: 20px;
+  text-align: center;
+  border-radius: 5px;
+  color: whitesmoke;
+}
+
+.qop1{
+  background-color: crimson;
+}
+.qop2{
+  background-color:tan;
+}
+.qop3{
+  background-color:mediumseagreen;
+}
+.qop4{
+  background-color:lightskyblue;
+}
+
+
+
+.qBoton{
+  display: flex;
+  justify-content: flex-end;
+}

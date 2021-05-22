@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../script/script.js"></script>
     <title>Questions</title>
   </head>
   <body>
@@ -17,27 +18,27 @@
     <main>
         <div class="mainCard">
             <div class="secondCard">   
-                <h2>Pregunta del Quiz</h2>
+                <h2 class="pregunta">Pregunta del Quiz</h2>
                 <div class="qContenedor">
-                    <fieldset id= "qFQuestion"> <!-- es cambia el id -->
-                        <input id ="op1" type="checkbox" name="" value="">
-                        <label for="op1">Opcion1</label>
+                    <div id= "qidF" class="qclassFielset"> <!-- cambia el id con javascript-->
+                      
+<!--                         <input id ="qop1" type="radio">
+                        <label for="qop1" class="qop1">Opcion1</label>
 
-                        <input id = "op2" type="checkbox" name="" value="">
-                        <label for="op2">Opcion2</label>
+                        <input id ="qop2" type="radio">
+                        <label for="qop2" class="qop2">Opcion2</label>
 
-                        <input id ="op3" type="checkbox" name="" value="">
-                        <label for="op3">Opcion3</label>
+                        <input id ="qop3" type="radio">
+                        <label for="qop3" class="qop3">Opcion3</label>
 
-                        <input id ="op4" type="checkbox" name="" value="">
-                        <label for="op4">Opcion4</label>
-
-                        <input id ="op5" type="checkbox" name="" value="">
-                        <label for="op5">Opcion5</label>
-
-                    </fieldset>
+                        <input id ="qop4" type="radio">
+                        <label for="qop4" class="qop4">Opcion4</label> -->
+                    </div>
+                    
                 </div>
-                <button id="boton" type="submit">Siguiente</button>
+                <div class="qBoton">
+                    <button id="boton" type="submit">Siguiente</button>
+                </div>
             </div>
         </div>
     </main>
