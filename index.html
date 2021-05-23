@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
     <title>Document</title>
   </head>
   <body>
@@ -15,13 +18,28 @@
       </div>
     </header>
     <main>
-        <div class="mainCard">
-            <div class="secondCard">   
-                <h2>Pregunta del Quiz</h2>
-                <button id="boton" type="submit">Siguiente</button>
+        <div class="topCard">
+            <div class="firstCard">   
+                <h2>¡Welcome to the quiz!</h2>
+                <a href="./html/questions.html"><button  target="_blank" id="boton" type="submit">Take the Quiz</button></a>
+                
              </div>
-         
-        </div>
+      </div>
+        <div class="lowCard">
+          <div class="secondCard">   
+              <h2>Your stats</h2>
+           </div>
+           <div class="grafica"></div>
+           <div class="ct-chart ct-perfect-fourth" id="chart1"></div>
+
+           <div class="lista">
+           
+           </div>
+           
+      </div>
+       
     </main>
+
+    <script src="./script/script.js"></script>
   </body>
 </html>
