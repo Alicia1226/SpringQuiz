@@ -36,7 +36,6 @@ main {
 }
 
 .mainCard {
-  /* background-color: whitesmoke; */
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(3.5px);
@@ -76,8 +75,8 @@ button:hover {
 .results {
   position: relative;
   margin-top: 2.5rem;
-  height: 20rem;
-  width: 20rem;
+  height: 15rem;
+  width: 15rem;
   border-radius: 50%;
   background-color: aquamarine;
   box-shadow: 5px 3px 8px #3b3b3b, -5px -3px 8px #ececec;
@@ -85,21 +84,21 @@ button:hover {
 
 .bar {
   background-color: black;
-  width: 0.5rem;
-  height: 10rem;
+  width: 0.4rem;
+  height: 8rem;
   margin-top: 25%;
   margin-left: 45%;
   transform: rotate(45deg);
 }
 
 .results p:nth-child(1) {
-  font-size: 8rem;
+  font-size: 5.5rem;
   position: absolute;
   margin-top: 5%;
   margin-left: 20%;
 }
 .results p:nth-child(3) {
-  font-size: 8rem;
+  font-size: 5.5rem;
   position: absolute;
   margin-top: -25%;
   margin-left: 50%;
@@ -130,6 +129,21 @@ button:hover {
 
     align-items: center;
     margin: 2.5rem;
+  }
+  .results {
+    height: 20rem;
+    width: 20rem;
+  }
+  .bar {
+    width: 0.5rem;
+    height: 10rem;
+  }
+
+  .results p:nth-child(1) {
+    font-size: 8rem;
+  }
+  .results p:nth-child(3) {
+    font-size: 8rem;
   }
   .parrafo {
     font-size: 2.2rem;
