@@ -63,14 +63,10 @@ let drawQuestion = (pregunta) =>{
         let tituloP = document.querySelector(".pregunta");
         let boxPregunta = document.querySelector(".qContenedor");
         let tagDivP = document.createElement("div")
-        /* let tagPreg = document.createTextNode(pre); */
-        /* document.querySelectorAll('body > main > div > div > h2').innerHTML = "texto" ; */
-        /* console.log('tagPreg' + tagPreg) */
 
         tagDivP.setAttribute("id",`qidF${id}`);
         tagDivP.setAttribute("class","qclassFielset");
         boxPregunta.appendChild(tagDivP);
-        /* tituloP.appendChild(tagPreg); */
         tituloP.innerHTML = pre
         
         for (let num=0; num<4;num++){
@@ -86,7 +82,6 @@ let drawQuestion = (pregunta) =>{
             tagLabel.setAttribute("class",`qop${num}`);
 
             //appendchild
-            /* tagLabel.appendChild(tagResp); */
             tagLabel.innerHTML = res[num];
             tagDivP.appendChild(tagInput);
             tagDivP.appendChild(tagLabel);
@@ -134,7 +129,7 @@ let objAciertos = (numAciertos) => {
     return obj;
 }
 
-aciertos.push(objAciertos(45))
+//aciertos.push(objAciertos(45)) 
 
 
 questionAPI()
@@ -156,9 +151,10 @@ questionAPI()
                 preguntaNum += 1;
                 drawQuestion(preguntas[preguntaNum]);
             }else{
-                /* console.log(userAnsw) */
                 compRespuestas()
                 console.log(userAnsw)
+                console.log(objAciertos(numAciertos))
+                window.open("../html/results.html","_self");
             }
         })
     })

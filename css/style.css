@@ -8,6 +8,10 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+.box-pregunta{
+  height: 100px;
+}
+
 header {
   width: 100vw;
   height: 60px;
@@ -91,9 +95,6 @@ label{
 .qop3{
   background-color:lightskyblue;
 }
-
-
-
 .qBoton{
   display: flex;
   justify-content: flex-end;
