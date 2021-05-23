@@ -7,7 +7,7 @@ html {
 
 body {
   /* background-color: rgb(181, 217, 248); */
-  background-image:  url("../assets/img/sakura.jpg");
+  background-image: url("../assets/img/sakura.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,14 +19,14 @@ body {
 header {
   width: 100vw;
   height: 6rem;
-  background-color: rgb(58, 155, 240);
+  background-color: rgba(99, 178, 247, 0.774);
 }
 
 h1 {
   font-size: 3rem;
   margin: 0;
   padding: 1rem 2rem;
-  color: whitesmoke;
+  color: rgb(255, 237, 188);
 }
 
 main {
@@ -37,13 +37,12 @@ main {
 
 .mainCard {
   /* background-color: whitesmoke; */
-  background: rgba( 255, 255, 255, 0.10 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
- backdrop-filter: blur( 3.5px );
--webkit-backdrop-filter: blur( 3.5px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
   border-radius: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   width: 30rem;
   margin-top: 2.5rem;
 }
@@ -56,19 +55,19 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 h2 {
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 button {
   font-size: 2rem;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   background-color: rgb(58, 155, 240);
   border: -1px solid rgba(248, 249, 250, 0.596);
   border-radius: 0.8rem;
   padding: 2rem;
   color: whitesmoke;
-  box-shadow:  5px 3px 8px #3b3b3b,
-             -5px -3px 8px #ececec;
+  cursor: pointer;
+  box-shadow: 5px 3px 8px #3b3b3b, -5px -3px 8px #ececec;
   transition: background-color 0.5s;
 }
 button:hover {
@@ -76,23 +75,21 @@ button:hover {
 }
 .results {
   position: relative;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   height: 20rem;
   width: 20rem;
   border-radius: 50%;
   background-color: aquamarine;
-  box-shadow:  5px 3px 8px #3b3b3b,
-             -5px -3px 8px #ececec;
+  box-shadow: 5px 3px 8px #3b3b3b, -5px -3px 8px #ececec;
 }
 
-.bar{
+.bar {
   background-color: black;
   width: 0.5rem;
   height: 10rem;
   margin-top: 25%;
   margin-left: 45%;
   transform: rotate(45deg);
-
 }
 
 .results p:nth-child(1) {
@@ -114,31 +111,23 @@ button:hover {
 /*  <--------------@Media queris@------------> */
 
 @media only screen and (min-width: 768px) {
-
   header {
     width: 100vw;
     height: 8rem;
-    background-color: #3a9bf0;
-  
   }
   h1 {
     font-size: 4.5rem;
-    
   }
   h2 {
     font-size: 2.6rem;
   }
   .mainCard {
-    
-    border-radius: 0.8rem;
     width: 80rem;
-    margin-top: 2.5rem;
   }
-
 
   .secondCard {
     display: flex;
-    
+
     align-items: center;
     margin: 2.5rem;
   }
