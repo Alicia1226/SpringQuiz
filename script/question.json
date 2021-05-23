@@ -3,9 +3,9 @@
  [
     {
         "id": 1,
-        "question": "Which classical book do you associate with pirate Captain Flint?",
-        "answer": "Treasure Islan",
-        "options": [    
+        "pregunta": "Which classical book do you associate with pirate Captain Flint?",
+        "solucion": "Treasure Islan",
+        "respuestas": [    
         "Pride and Prejudice",
         "Moby-Dick",
         "The Adventures of Huckleberry Finn",
@@ -14,9 +14,9 @@
     },
     {
         "id": 2,
-        "question": "What is the capital of New Zealand?",
-        "answer": "Wellington",
-        "options": [
+        "pregunta": "What is the capital of New Zealand?",
+        "solucion": "Wellington",
+        "respuestas": [
         "Wellington",
         "Auckland",
         "Queenstown",
@@ -25,9 +25,9 @@
     },
     {
         "id": 3,
-        "question": "What is the minimum number of portions of fruit and vegetables we should try to eat every day?",
-        "answer": "Five",
-        "options": [
+        "pregunta": "What is the minimum number of portions of fruit and vegetables we should try to eat every day?",
+        "solucion": "Five",
+        "respuestas": [
         "One",
         "Two",
         "Four",
@@ -36,9 +36,9 @@
     },
     {
         "id": 4,
-        "question": "Which of these can you NOT recycle?",
-        "answer": "Light bulbs",
-        "options": [
+        "pregunta": "Which of these can you NOT recycle?",
+        "solucion": "Light bulbs",
+        "respuestas": [
         "Cardboard",
         "Milk and juice cartons",
         "Steel and aluminium cans",
@@ -47,9 +47,9 @@
     },
     {
         "id": 5,
-        "question": "In Super Mario Bros., what was Mario’s original name?",
-        "answer": "Jumpman",
-        "options": [
+        "pregunta": "In Super Mario Bros., what was Mario’s original name?",
+        "solucion": "Jumpman",
+        "respuestas": [
         "Jumpman",
         "Joshi",
         "Luigi",
