@@ -2,11 +2,10 @@ let preguntaNum = 0;
 let numAciertos = 0;
 let preguntas = []
 let userAnsw = []
-let aciertos = []
+let oldNumA = 0;
+
 
 //
-
-
 
 let addItem = (array,key) => {
   localStorage.setItem(key, JSON.stringify(array));
@@ -39,7 +38,7 @@ let addPreguntaToArry = (id,question,correctAns,incorrectAns,)=>{
 
 let randElemnt = (array)=>{
     let result=[];
-    while(result.length < 4){
+    while(result.length < array.length){
         let random = Math.floor(Math.random() * array.length);
         let element = array[random];
         if (result.indexOf(element) == -1)result.push(element)
@@ -119,29 +118,12 @@ let drawQuestion = (pregunta) =>{
 let compRespuestas = () => {
     userAnsw.forEach((e,i,a) => {
         if(preguntas[i].id == i && preguntas[i].solucion == e){
-            numAciertos += 1 //hay que poner a 0 al terminar de contar
+            numAciertos += 1 
         }
     })
-    /* console.log(numAciertos) */
 }
 
-let objAciertos = (numAciertos) => {
-    let fecha = new Date()
-    let hoy = fecha.toLocaleDateString()
-    let obj = {};
-    
-    if (aciertos.length == 0 || aciertos[aciertos.length - 1].fecha != hoy){
-            obj.fecha = hoy;
-            obj.aciertos = numAciertos;
-    }else{
-        if(aciertos[aciertos.length - 1].fecha == hoy){
-            let acumulado = aciertos[aciertos.length - 1].aciertos + numAciertos;
-                obj.fecha = hoy
-                obj.aciertos = acumulado
-        }
-    }
-    return obj;
-}
+
 
 //
 async function getQuestionsAsync(questions) {
@@ -173,10 +155,12 @@ questionAPI()
                     drawQuestion(preguntas[preguntaNum]);
                 }else{
                     compRespuestas()
+                    oldNumA = getItem("numAciertos")
+                    addItem(oldNumA,"oldNumA")
                     addItem(numAciertos, "numAciertos")
                     console.log("Num aciertos: " + numAciertos)
                     console.log(userAnsw)
-                    console.log(objAciertos(numAciertos))
+                    /* console.log(objAciertos(numAciertos)) */
                     window.open("../html/results.html","_self");
                 }
             })
