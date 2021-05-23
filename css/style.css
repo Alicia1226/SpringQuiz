@@ -52,6 +52,7 @@ button {
 .qclassFielset{
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end; 
 }
 
 .qContenedor{

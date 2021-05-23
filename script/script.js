@@ -1,7 +1,9 @@
 let preguntaNum = 0;
+let numAciertos = 0;
 let preguntas = []
 let userAnsw = []
 let aciertos = []
+
 
 //1. hacer un fichero de preguntas y respustas, crear un json
 
@@ -61,18 +63,21 @@ let drawQuestion = (pregunta) =>{
         let tituloP = document.querySelector(".pregunta");
         let boxPregunta = document.querySelector(".qContenedor");
         let tagDivP = document.createElement("div")
-        let tagPreg = document.createTextNode(pre);
+        /* let tagPreg = document.createTextNode(pre); */
+        /* document.querySelectorAll('body > main > div > div > h2').innerHTML = "texto" ; */
+        /* console.log('tagPreg' + tagPreg) */
 
         tagDivP.setAttribute("id",`qidF${id}`);
         tagDivP.setAttribute("class","qclassFielset");
         boxPregunta.appendChild(tagDivP);
-        tituloP.appendChild(tagPreg);
+        /* tituloP.appendChild(tagPreg); */
+        tituloP.innerHTML = pre
         
         for (let num=0; num<4;num++){
             //creacion de elementos
             let tagInput = document.createElement("input");
             let tagLabel = document.createElement("label");
-            let tagResp = document.createTextNode(res[num]);
+            /* let tagResp = document.createTextNode(res[num]); */
             
             //colocacion de atributos
             tagInput.setAttribute("id",`qop${num}`); //num es un i de recorrido
@@ -81,7 +86,8 @@ let drawQuestion = (pregunta) =>{
             tagLabel.setAttribute("class",`qop${num}`);
 
             //appendchild
-            tagLabel.appendChild(tagResp);
+            /* tagLabel.appendChild(tagResp); */
+            tagLabel.innerHTML = res[num];
             tagDivP.appendChild(tagInput);
             tagDivP.appendChild(tagLabel);
         }
@@ -100,6 +106,37 @@ let drawQuestion = (pregunta) =>{
         tagDivP.appendChild(tagDF);
 }
 
+
+let compRespuestas = () => {
+    userAnsw.forEach((e,i,a) => {
+        if(preguntas[i].id == i && preguntas[i].solucion == e){
+            numAciertos += 1 //hay que poner a 0 al terminar de contar
+        }
+    })
+    /* console.log(numAciertos) */
+}
+
+let objAciertos = (numAciertos) => {
+    let fecha = new Date()
+    let hoy = fecha.toLocaleDateString()
+    let obj = {};
+    
+    if (aciertos.length == 0 || aciertos[aciertos.length - 1].fecha != hoy){
+            obj.fecha = hoy;
+            obj.aciertos = numAciertos;
+    }else{
+        if(aciertos[aciertos.length - 1].fecha == hoy){
+            let acumulado = aciertos[aciertos.length - 1].aciertos + numAciertos;
+                obj.fecha = hoy
+                obj.aciertos = acumulado
+        }
+    }
+    return obj;
+}
+
+aciertos.push(objAciertos(45))
+console.log(objAciertos(10))
+
 questionAPI()
     .then(x => {
         x.results.forEach((e,i,a) => {
@@ -107,16 +144,21 @@ questionAPI()
         })
     })
     .then(() => {
+        
+        preguntas.forEach(x=> console.log(x.solucion))
         drawQuestion(preguntas[preguntaNum]);
         document.getElementById("formulario").addEventListener('submit',(event) =>{
             event.preventDefault();
-            console.log(datoSlct());
+            
+            userAnsw.push(datoSlct());
+
             if ( preguntaNum < preguntas.length -1){
                 preguntaNum += 1;
                 drawQuestion(preguntas[preguntaNum]);
-                
             }else{
-                console.log('final')
+                /* console.log(userAnsw) */
+                compRespuestas()
+                console.log(userAnsw)
             }
         })
-    }) 
+    })
