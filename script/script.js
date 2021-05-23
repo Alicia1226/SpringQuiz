@@ -135,7 +135,7 @@ let objAciertos = (numAciertos) => {
 }
 
 aciertos.push(objAciertos(45))
-console.log(objAciertos(10))
+
 
 questionAPI()
     .then(x => {
