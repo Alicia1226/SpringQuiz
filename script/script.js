@@ -4,6 +4,8 @@ let preguntas = []
 let userAnsw = []
 let aciertos = []
 
+let preguntasJSON = []
+
 
 //1. hacer un fichero de preguntas y respustas, crear un json
 
@@ -108,7 +110,7 @@ let compRespuestas = () => {
             numAciertos += 1 //hay que poner a 0 al terminar de contar
         }
     })
-    /* console.log(numAciertos) */
+    console.log(numAciertos);
 }
 
 let objAciertos = (numAciertos) => {
@@ -131,6 +133,24 @@ let objAciertos = (numAciertos) => {
 
 //aciertos.push(objAciertos(45)) 
 
+/* let addPregPjson = async ()=>{
+    let data = await getQuestionsAsync("../script/question.json").then((x) => {
+        let nuevo = x.map((obj)=>{
+            preguntas.push(obj)
+        })
+    return nuevo;
+    })
+    return data
+}
+ */
+
+//Fetch del fichero json local
+
+async function getQuestionsAsync(questions) {
+    let response = await fetch(`${questions}`);
+    let data = await response.json();
+    return data;
+  }
 
 questionAPI()
     .then(x => {
@@ -139,27 +159,34 @@ questionAPI()
         })
     })
     .then(() => {
-        
-        preguntas.forEach(x=> console.log(x.solucion))
-        drawQuestion(preguntas[preguntaNum]);
-        document.getElementById("formulario").addEventListener('submit',(event) =>{
-            event.preventDefault();
-            
-            userAnsw.push(datoSlct());
+        /* getQuestionsAsync("../script/question.json").then(() => {
+                 x.forEach((obj)=>{
+                preguntas.push(obj)
+            }) */
 
-            if ( preguntaNum < preguntas.length -1){
-                preguntaNum += 1;
-                drawQuestion(preguntas[preguntaNum]);
-            }else{
-                compRespuestas()
-                console.log(userAnsw)
-                console.log(objAciertos(numAciertos))
-                window.open("../html/results.html","_self");
-            }
-        })
-    })
+            preguntas.forEach(x=> console.log(x.solucion))
+            drawQuestion(preguntas[preguntaNum]);
+            document.getElementById("formulario").addEventListener('submit',(event) =>{
+                event.preventDefault();
+                userAnsw.push(datoSlct());
+                if ( preguntaNum < preguntas.length -1){
+                    preguntaNum += 1;
+                    drawQuestion(preguntas[preguntaNum]);
+                }else{
+                    console.log('hola')
+                    compRespuestas()
+                    console.log("Num aciertos: " + numAciertos)
+                    console.log(userAnsw)
+                    console.log(objAciertos(numAciertos))
+                    /* setTimeout(function(){ window.open("../html/results.html","_self",false); }, 7000); */
+                    
+                }
+            })
 
+        /* }).catch((error) => console.log("hubo un error" + error)) */
+    }).catch((error) => console.log("hubo un error" + error))
 
+/* 
 let fecha = []
 let aciertos2 =  []
 
@@ -201,21 +228,15 @@ function addDate (){
 
  document.querySelector('.lista').innerHTML = addDate()
 
-async function getQuestionsAsync(questions) {
-  let response = await fetch(`${questions}`);
-  let data = await response.json();
-  return data;
-}
+
 let newData = [{fecha:'13/12/2020',aciertos:0},{fecha:'14/12/2020',aciertos:6},{fecha:'15/12/2020',aciertos:1}]
-getQuestionsAsync("../script/question.json")
+
   .then((data) => {
-    /*  console.log(data);
-    console.log(randElemnt(data)); */
-    /* addItem(data); */
+
     sumaData()
   })
 
-  .catch((error) => console.log("hubo un error" + error));
+  
 
 let randElemnt = (array) => {
   let result = [];
@@ -226,7 +247,7 @@ let randElemnt = (array) => {
   }
   return result;
 };
-/* guardar y sumar datos localStorage */
+guardar y sumar datos localStorage 
 let resultLocalStore = JSON.parse(localStorage.getItem("results"));
 let addItem = (array) => {
   localStorage.setItem("resultados", JSON.stringify(array));
@@ -255,3 +276,4 @@ paintResults("2", "5");
 document.getElementById("boton").addEventListener("click", (e) => {
   window.location.href = "../index.html";
 });
+ */
