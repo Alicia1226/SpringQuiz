@@ -6,7 +6,7 @@ let aciertos2 =  []
 
 
 /* guardar y sumar datos localStorage */
-let resultLocalStore = JSON.parse(localStorage.getItem("results"));
+
 
 let addItem = (array,key) => {
   localStorage.setItem(key, JSON.stringify(array));

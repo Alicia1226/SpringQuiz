@@ -7,7 +7,6 @@ let aciertos = []
 //
 
 
-let resultLocalStore = JSON.parse(localStorage.getItem("results"));
 
 let addItem = (array,key) => {
   localStorage.setItem(key, JSON.stringify(array));
@@ -159,7 +158,7 @@ questionAPI()
         })
     })
     .then(() => {
-        getQuestionsAsync("../script/question.json").then(() => {
+        getQuestionsAsync("../script/question.json").then((x) => {
                 x.forEach((obj)=>{
                 preguntas.push(obj)
             }) 
