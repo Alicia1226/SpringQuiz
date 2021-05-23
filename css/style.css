@@ -30,10 +30,37 @@ h1 {
 }
 
 main {
-  display: flex;
-  justify-content: center;
+  display:flex;
+  flex-direction: column;
   align-items: center;
 }
+
+
+.topCard {
+  background-color: whitesmoke;
+  border-radius: 12px;
+  width: 20rem;
+  margin-top: 40px;
+  box-shadow: 0px 0px 5px 1px lightgray;
+  
+}
+
+.lowCard {
+  background-color: whitesmoke;
+  border-radius: 12px;
+  width: 20rem;
+  margin-top: 25px;
+  box-shadow: 0px 0px 5px 1px lightgray;
+ 
+}
+
+.firstCard {
+  margin: 25px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 .mainCard {
   background: rgba(255, 255, 255, 0.1);
@@ -147,5 +174,32 @@ button:hover {
   }
   .parrafo {
     font-size: 2.2rem;
+  }
+}
+
+ul{
+
+  list-style:none;
+  font-size: 8px;
+
+}
+
+ #chart1{
+stroke: cornflowerblue
+
+} 
+
+@media screen and (min-width:600px){
+  .topcard{
+
+   display: flex;
+      }
+}
+
+@media screen and (min-width:1024px){
+  .topcard {
+  width: 60%;
+
+  justify-content: center;
   }
 }
