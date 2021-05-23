@@ -40,7 +40,6 @@ main {
   border-radius: 12px;
   width: 20rem;
   margin-top: 25px;
-  margin-bottom: 20px;
   box-shadow: 0px 0px 5px 1px lightgray
  
 }
@@ -71,4 +70,31 @@ button {
   margin: 40px;
   padding: 15px;
   color: whitesmoke;
+}
+
+ul{
+
+  list-style:none;
+  font-size: 8px;
+
+}
+
+ #chart1{
+stroke: cornflowerblue
+
+} 
+
+@media screen and (min-width:600px){
+  .topcard{
+
+   display: flex;
+      }
+}
+
+@media screen and (min-width:1024px){
+  .topcard {
+  width: 60%;
+
+  justify-content: center;
+  }
 }
