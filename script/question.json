@@ -2,7 +2,7 @@
 
  [
     {
-        "id": 1,
+        "id": 5,
         "pregunta": "Which classical book do you associate with pirate Captain Flint?",
         "solucion": "Treasure Islan",
         "respuestas": [    
@@ -13,7 +13,7 @@
         ]
     },
     {
-        "id": 2,
+        "id": 6,
         "pregunta": "What is the capital of New Zealand?",
         "solucion": "Wellington",
         "respuestas": [
@@ -24,7 +24,7 @@
         ]
     },
     {
-        "id": 3,
+        "id": 7,
         "pregunta": "What is the minimum number of portions of fruit and vegetables we should try to eat every day?",
         "solucion": "Five",
         "respuestas": [
@@ -35,7 +35,7 @@
         ]
     },
     {
-        "id": 4,
+        "id": 8,
         "pregunta": "Which of these can you NOT recycle?",
         "solucion": "Light bulbs",
         "respuestas": [
@@ -46,7 +46,7 @@
         ]
     },
     {
-        "id": 5,
+        "id": 9,
         "pregunta": "In Super Mario Bros., what was Mario’s original name?",
         "solucion": "Jumpman",
         "respuestas": [
