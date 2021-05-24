@@ -46,24 +46,6 @@ let randElemnt = (array)=>{
     return result;
 }
 
-let datoSlct = ()=>{
-    let arry = document.getElementsByClassName("qclassFielset")[0].children;
-    let inputID;
-    let respuestaUser;
-    for (let i=0;i< arry.length;i++){
-        if (arry[i].checked){
-            inputID = arry[i].id
-        }    
-    }
-
-    for (let a=0;a< arry.length;a++){
-        if (arry[a].htmlFor == inputID){
-            respuestaUser = arry[a].outerText
-        }
-    }
-    return respuestaUser;
-}
-
 let drawQuestion = (pregunta) =>{
         document.querySelector(".pregunta").innerHTML=""
         if (document.querySelector(".qContenedor")){
@@ -117,13 +99,40 @@ let drawQuestion = (pregunta) =>{
 
 let compRespuestas = () => {
     userAnsw.forEach((e,i,a) => {
-        if(preguntas[i].id == i && preguntas[i].solucion == e){
+        if(preguntas[i].id == e.id && preguntas[i].solucion == e.solucion){
             numAciertos += 1 
         }
     })
 }
 
+let objAnswUser = (idP,respuesta) => {
+    let obj = {};
+    obj.id = idP;
+    obj.solucion = respuesta;
+    return obj;
+}
 
+let datoSlct = ()=>{
+    let pArray = document.getElementsByClassName("qclassFielset")[0].id;
+    let idQ = pArray.replace('qidF','')
+    let arry = document.getElementsByClassName("qclassFielset")[0].children;
+    let inputID;
+    let respuestaUser;
+
+    for (let i=0;i< arry.length;i++){
+        if (arry[i].checked){
+            inputID = arry[i].id
+        }    
+    }
+    
+    for (let a=0;a< arry.length;a++){
+        if (arry[a].htmlFor == inputID){
+            respuestaUser = arry[a].outerText
+        }
+    }
+
+    return objAnswUser(idQ,respuestaUser);
+}
 
 //
 async function getQuestionsAsync(questions) {
@@ -144,14 +153,15 @@ questionAPI()
                 x.forEach((obj)=>{
                 preguntas.push(obj)
             }) 
-
+            preguntas = randElemnt(preguntas)
+            /* console.log(preguntas) */
             preguntas.forEach(x=> console.log(x.solucion))
             drawQuestion(preguntas[preguntaNum]);
             document.getElementById("formulario").addEventListener('submit',(event) =>{
                 event.preventDefault();
                 userAnsw.push(datoSlct());
-                if ( preguntaNum < preguntas.length -1){
-                    preguntaNum += 1;
+                preguntaNum += 1;
+                if (preguntaNum <= preguntas.length - 1){
                     drawQuestion(preguntas[preguntaNum]);
                 }else{
                     compRespuestas()
