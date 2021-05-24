@@ -16,6 +16,10 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+.box-pregunta{
+  height: 100px;
+}
+
 header {
   width: 100vw;
   height: 6rem;
@@ -36,14 +40,13 @@ main {
 }
 
 
-.topCard {
+/* .topCard {
   background-color: whitesmoke;
   border-radius: 12px;
-  width: 20rem;
+  width: 30rem;
   margin-top: 40px;
   box-shadow: 0px 0px 5px 1px lightgray;
-  
-}
+} */
 
 .lowCard {
   background-color: whitesmoke;
@@ -109,6 +112,52 @@ button:hover {
   box-shadow: 5px 3px 8px #3b3b3b, -5px -3px 8px #ececec;
 }
 
+.qclassFielset{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end; 
+}
+
+.qContenedor{
+  margin-bottom: 15px;
+}
+
+input[type="radio"]{
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+.qclassFielset label{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+label{
+  padding-top:16px;
+  padding-bottom: 20px;
+  text-align: center;
+  border-radius: 5px;
+  color: whitesmoke;
+}
+
+.qop0{
+  background-color: crimson;
+}
+.qop1{
+  background-color:tan;
+}
+.qop2{
+  background-color:mediumseagreen;
+}
+.qop3{
+  background-color:lightskyblue;
+}
+.qBoton{
+  display: flex;
+  justify-content: flex-end;
+}
 .bar {
   background-color: black;
   width: 0.4rem;
@@ -153,7 +202,6 @@ button:hover {
 
   .secondCard {
     display: flex;
-
     align-items: center;
     margin: 2.5rem;
   }
@@ -178,28 +226,10 @@ button:hover {
 }
 
 ul{
-
   list-style:none;
   font-size: 8px;
-
 }
 
  #chart1{
-stroke: cornflowerblue
-
+stroke: cornflowerblue;
 } 
-
-@media screen and (min-width:600px){
-  .topcard{
-
-   display: flex;
-      }
-}
-
-@media screen and (min-width:1024px){
-  .topcard {
-  width: 60%;
-
-  justify-content: center;
-  }
-}
