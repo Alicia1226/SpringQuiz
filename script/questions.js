@@ -2,12 +2,23 @@ let preguntaNum = 0;
 let numAciertos = 0;
 let preguntas = []
 let userAnsw = []
-let aciertos = []
-
-let preguntasJSON = []
+let oldNumA = 0;
 
 
-//1. hacer un fichero de preguntas y respustas, crear un json
+//
+
+let addItem = (array,key) => {
+  localStorage.setItem(key, JSON.stringify(array));
+};
+
+let getItem = (key) => {
+  let resultLocalStore = JSON.parse(localStorage.getItem(key));
+  return resultLocalStore;
+};
+
+
+
+//
 
 let questionAPI = async ()=>{
     let fQuetionAPI = await fetch('https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple');
@@ -27,7 +38,7 @@ let addPreguntaToArry = (id,question,correctAns,incorrectAns,)=>{
 
 let randElemnt = (array)=>{
     let result=[];
-    while(result.length < 4){
+    while(result.length < array.length){
         let random = Math.floor(Math.random() * array.length);
         let element = array[random];
         if (result.indexOf(element) == -1)result.push(element)
@@ -107,50 +118,20 @@ let drawQuestion = (pregunta) =>{
 let compRespuestas = () => {
     userAnsw.forEach((e,i,a) => {
         if(preguntas[i].id == i && preguntas[i].solucion == e){
-            numAciertos += 1 //hay que poner a 0 al terminar de contar
+            numAciertos += 1 
         }
     })
-    console.log(numAciertos);
 }
 
-let objAciertos = (numAciertos) => {
-    let fecha = new Date()
-    let hoy = fecha.toLocaleDateString()
-    let obj = {};
-    
-    if (aciertos.length == 0 || aciertos[aciertos.length - 1].fecha != hoy){
-            obj.fecha = hoy;
-            obj.aciertos = numAciertos;
-    }else{
-        if(aciertos[aciertos.length - 1].fecha == hoy){
-            let acumulado = aciertos[aciertos.length - 1].aciertos + numAciertos;
-                obj.fecha = hoy
-                obj.aciertos = acumulado
-        }
-    }
-    return obj;
-}
 
-//aciertos.push(objAciertos(45)) 
 
-/* let addPregPjson = async ()=>{
-    let data = await getQuestionsAsync("../script/question.json").then((x) => {
-        let nuevo = x.map((obj)=>{
-            preguntas.push(obj)
-        })
-    return nuevo;
-    })
-    return data
-}
- */
-
-//Fetch del fichero json local
-
+//
 async function getQuestionsAsync(questions) {
     let response = await fetch(`${questions}`);
     let data = await response.json();
     return data;
-  }
+}
+
 
 questionAPI()
     .then(x => {
@@ -159,8 +140,8 @@ questionAPI()
         })
     })
     .then(() => {
-        getQuestionsAsync("../script/question.json").then(() => {
-                 x.forEach((obj)=>{
+        getQuestionsAsync("../script/question.json").then((x) => {
+                x.forEach((obj)=>{
                 preguntas.push(obj)
             }) 
 
@@ -173,106 +154,16 @@ questionAPI()
                     preguntaNum += 1;
                     drawQuestion(preguntas[preguntaNum]);
                 }else{
-                    console.log('hola')
                     compRespuestas()
+                    addItem(numAciertos, "numAciertos")
                     console.log("Num aciertos: " + numAciertos)
                     console.log(userAnsw)
-                    console.log(objAciertos(numAciertos))
+                    /* console.log(objAciertos(numAciertos)) */
                     window.open("../html/results.html","_self");
                 }
             })
 
         }).catch((error) => console.log("hubo un error" + error))
-    })
-
-/* 
-let fecha = []
-let aciertos2 =  []
+   })
 
 
- let aciertos = [{fecha:'13/12/2020',aciertos:0},{fecha:'14/12/2020',aciertos:6},{fecha:'15/12/2020',aciertos:1}]
-
-
-    aciertos.forEach((datos)=>{
-        console.log(datos.fecha)
-        fecha.push(datos.fecha)
-        aciertos2.push(datos.aciertos)
-        console.log(datos.aciertos)
-    })
-
-    let data ={
-        labels: fecha,
-        series: [aciertos2]
-    };
-  new Chartist.Line('.ct-chart', data);
-
-function addDate (){
-
-    let textInner = "<ul>"
-    aciertos.forEach((elemento)=>{
-        textInner+="<li>"
-        textInner+=elemento.fecha
-        textInner+= " "
-        textInner+="<b>"
-        textInner+=elemento.aciertos
-        textInner+= " "
-        textInner+= "aciertos"
-        textInner+="</b>"
-        textInner+="</li>"
-    })
-    textInner+= "</ul>"
-    return textInner 
-}
-
-
- document.querySelector('.lista').innerHTML = addDate()
-
-
-let newData = [{fecha:'13/12/2020',aciertos:0},{fecha:'14/12/2020',aciertos:6},{fecha:'15/12/2020',aciertos:1}]
-
-  .then((data) => {
-
-    sumaData()
-  })
-
-  
-
-let randElemnt = (array) => {
-  let result = [];
-  while (result.length < array.length) {
-    let random = Math.floor(Math.random() * array.length);
-    let element = array[random];
-    if (result.indexOf(element) == -1) result.push(element);
-  }
-  return result;
-};
-guardar y sumar datos localStorage 
-let resultLocalStore = JSON.parse(localStorage.getItem("results"));
-let addItem = (array) => {
-  localStorage.setItem("resultados", JSON.stringify(array));
-};
-let getItem = (key) => {
-  let resultLocalStore = JSON.parse(localStorage.getItem(key));
-  return resultLocalStore;
-};
-let sumaData = () => {
-  let oldData = getItem("resultados");
-  let suma = oldData.concat(newData);
-  addItem(suma)
-};
-
-const result1 = document.getElementById("number1");
-const result2 = document.getElementById("number2");
-
-
-function paintResults(data1, data2) {
-  result1.innerHTML = data1;
-
-  result2.innerHTML = data2;
-}
-paintResults("2", "5");
-
-document.getElementById("boton").addEventListener("click", (e) => {
-  window.location.href = "../index.html";
-});
- */
