@@ -1,13 +1,6 @@
 let fecha = []
 let aciertos2 =  []
 
-
-
-
-
-/* guardar y sumar datos localStorage */
-
-
 let addItem = (array,key) => {
   localStorage.setItem(key, JSON.stringify(array));
 };
@@ -17,15 +10,6 @@ let getItem = (key) => {
   return resultLocalStore;
 };
 
-/* let sumaData = () => {
-  let oldData = getItem("resultados");
-  let suma = oldData.concat(newData);
-  addItem(suma)
-};
- */
-
-/* let aciertos = [{fecha:'13/12/2020',aciertos:0},{fecha:'14/12/2020',aciertos:6},{fecha:'15/12/2020',aciertos:1}]
-addItem(aciertos,"resultados") */
 
 function dibujaGrafica(){
     getItem("resultados").forEach((datos)=>{

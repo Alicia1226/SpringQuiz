@@ -155,8 +155,6 @@ questionAPI()
                     drawQuestion(preguntas[preguntaNum]);
                 }else{
                     compRespuestas()
-                    oldNumA = getItem("numAciertos")
-                    addItem(oldNumA,"oldNumA")
                     addItem(numAciertos, "numAciertos")
                     console.log("Num aciertos: " + numAciertos)
                     console.log(userAnsw)

@@ -1,5 +1,11 @@
-let aciertos;
+let aciertos=[];
 let newData = []
+let fechaTotal = Date.now()
+let fecha = new Date(fechaTotal)
+let tiempo = fecha.toLocaleTimeString()
+let hoy = fecha.toLocaleDateString()
+let fechaFinal = hoy +"-" + tiempo
+
 
 
 
@@ -15,51 +21,21 @@ let getItem = (key) => {
     return resultLocalStore;
 };
 
-let sumaData = (nameItem) => {
-    let oldData = getItem(nameItem);
-    let suma = oldData.concat(newData);
-    addItem(suma)
-};
-
-let fecha = new Date()
-let hoy = fecha.toLocaleDateString()
-
-if (getItem("resultados") != null){
-    aciertos = getItem("resultados")
-}else{
-    aciertos = []
-}
-
-oldNumA = getItem("oldNumA")
-
 let objAciertos = (numAciertos) => {
-
     let obj = {};
-    
-    if (aciertos.length == 0 || aciertos[aciertos.length - 1].fecha != hoy){
-            obj.fecha = hoy;
-            obj.aciertos = numAciertos;
-    }else{
-        if(aciertos[aciertos.length - 1].fecha == hoy){
-            let acumulado = aciertos[aciertos.length - 1].aciertos + numAciertos;
-                obj.fecha = hoy
-                obj.aciertos = acumulado
-        }
-    }
+    obj.fecha = fechaFinal;
+    obj.aciertos = numAciertos;
     return obj;
 }
-/* console.log(aciertos[aciertos.length - 1].fecha == hoy) */
-if (aciertos.length == 0){
-    let obj = {};
-    obj.fecha = hoy;
-    obj.aciertos = getItem("numAciertos");
-    aciertos.push(obj)
-}else if(aciertos[aciertos.length - 1].fecha == hoy ){
-    aciertos.pop()
-    aciertos.push(objAciertos(getItem("numAciertos") + getItem("oldNumA")))
-}
-addItem(aciertos,"resultados")
 
+if (getItem("resultados") == null){
+    aciertos.push(objAciertos(getItem("numAciertos")))
+    addItem(aciertos,"resultados")
+}else{
+    aciertos.push(objAciertos(getItem("numAciertos")))
+    let  sumaData = getItem("resultados").concat(aciertos)
+    addItem(sumaData,"resultados")
+}
 
 const result1 = document.getElementById("number1");
 const result2 = document.getElementById("number2");
