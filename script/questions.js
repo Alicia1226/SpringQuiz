@@ -1,24 +1,9 @@
+import { addItem } from './script.js';
+
 let preguntaNum = 0;
 let numAciertos = 0;
-let preguntas = []
-let userAnsw = []
-let oldNumA = 0;
-
-
-//
-
-let addItem = (array,key) => {
-  localStorage.setItem(key, JSON.stringify(array));
-};
-
-let getItem = (key) => {
-  let resultLocalStore = JSON.parse(localStorage.getItem(key));
-  return resultLocalStore;
-};
-
-
-
-//
+let preguntas = [];
+let userAnsw = [];
 
 let questionAPI = async ()=>{
     let fQuetionAPI = await fetch('https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple');
@@ -27,7 +12,7 @@ let questionAPI = async ()=>{
 }
 
 let addPreguntaToArry = (id,question,correctAns,incorrectAns,)=>{
-    let objPregunta= {}
+    let objPregunta= {};
     objPregunta["id"] = id;
     objPregunta["pregunta"] = question;
     objPregunta["solucion"] = correctAns;  
@@ -54,7 +39,7 @@ let drawQuestion = (pregunta) =>{
 
         let id = pregunta.id;
         let pre = pregunta.pregunta;
-        let res = randElemnt(pregunta.respuestas); //array
+        let res = randElemnt(pregunta.respuestas); 
         let tituloP = document.querySelector(".pregunta");
         let boxPregunta = document.querySelector(".qContenedor");
         let tagDivP = document.createElement("div")
@@ -68,7 +53,6 @@ let drawQuestion = (pregunta) =>{
             //creacion de elementos
             let tagInput = document.createElement("input");
             let tagLabel = document.createElement("label");
-            /* let tagResp = document.createTextNode(res[num]); */
             
             //colocacion de atributos
             tagInput.setAttribute("id",`qop${num}`); //num es un i de recorrido
@@ -96,11 +80,10 @@ let drawQuestion = (pregunta) =>{
         tagDivP.appendChild(tagDF);
 }
 
-
 let compRespuestas = () => {
     userAnsw.forEach((e,i,a) => {
         if(preguntas[i].id == e.id && preguntas[i].solucion == e.solucion){
-            numAciertos += 1 
+            numAciertos += 1;
         }
     })
 }
@@ -121,26 +104,23 @@ let datoSlct = ()=>{
 
     for (let i=0;i< arry.length;i++){
         if (arry[i].checked){
-            inputID = arry[i].id
+            inputID = arry[i].id;
         }    
     }
     
     for (let a=0;a< arry.length;a++){
         if (arry[a].htmlFor == inputID){
-            respuestaUser = arry[a].outerText
+            respuestaUser = arry[a].outerText;
         }
     }
-
     return objAnswUser(idQ,respuestaUser);
 }
 
-//
 async function getQuestionsAsync(questions) {
     let response = await fetch(`${questions}`);
     let data = await response.json();
     return data;
 }
-
 
 questionAPI()
     .then(x => {
@@ -151,11 +131,11 @@ questionAPI()
     .then(() => {
         getQuestionsAsync("../script/question.json").then((x) => {
                 x.forEach((obj)=>{
-                preguntas.push(obj)
+                preguntas.push(obj);
             }) 
-            preguntas = randElemnt(preguntas)
+            preguntas = randElemnt(preguntas);
             /* console.log(preguntas) */
-            preguntas.forEach(x=> console.log(x.solucion))
+            preguntas.forEach(x=> console.log(x.solucion));
             drawQuestion(preguntas[preguntaNum]);
             document.getElementById("formulario").addEventListener('submit',(event) =>{
                 event.preventDefault();
@@ -164,11 +144,10 @@ questionAPI()
                 if (preguntaNum <= preguntas.length - 1){
                     drawQuestion(preguntas[preguntaNum]);
                 }else{
-                    compRespuestas()
-                    addItem(numAciertos, "numAciertos")
-                    console.log("Num aciertos: " + numAciertos)
-                    console.log(userAnsw)
-                    /* console.log(objAciertos(numAciertos)) */
+                    compRespuestas();
+                    addItem(numAciertos, "numAciertos");
+                    console.log("Num aciertos: " + numAciertos);
+                    console.log(userAnsw);
                     window.open("../html/results.html","_self");
                 }
             })
