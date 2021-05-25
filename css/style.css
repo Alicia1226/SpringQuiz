@@ -16,6 +16,12 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+input[type="radio"]:checked+label{ 
+  background:#e7e7e7 ;
+  color: black;
+  /* border:0.5px solid black; */
+} 
+
 .box-pregunta{
   height: 100px;
 }
