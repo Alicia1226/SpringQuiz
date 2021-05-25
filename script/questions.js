@@ -57,6 +57,7 @@ let drawQuestion = (pregunta) =>{
             //colocacion de atributos
             tagInput.setAttribute("id",`qop${num}`); //num es un i de recorrido
             tagInput.setAttribute("type","radio");
+            tagInput.setAttribute("name","pre");
             tagLabel.setAttribute("for",`qop${num}`);
             tagLabel.setAttribute("class",`qop${num}`);
 
@@ -66,7 +67,7 @@ let drawQuestion = (pregunta) =>{
             tagDivP.appendChild(tagLabel);
         }
 
-        let tagBN = document.createTextNode("Siguiente");
+        let tagBN = document.createTextNode("Next");
 
         let tagDF = document.createElement("div");
         tagDF.setAttribute("class","qBoton");
