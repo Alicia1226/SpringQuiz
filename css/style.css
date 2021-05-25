@@ -19,11 +19,11 @@ body {
 input[type="radio"]:checked+label{ 
   background:#e7e7e7 ;
   color: black;
-  border:0.3px solid black;
+  /* border:0.3px solid black; */
 } 
 
 .box-pregunta{
-  height: 100px;
+  height: 130px;
 }
 
 header {
@@ -89,11 +89,16 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2.5rem;
+  width: 100%;
+  text-align: center;
 }
 
 h2 {
   font-size: 2rem;
+}
+
+.pregunta {
+  font-size: 1,5rem;
 }
 
 button {
@@ -125,6 +130,8 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end; 
+  width:25rem;
+  font-size: 1.5rem;
 }
 
 .qContenedor{
