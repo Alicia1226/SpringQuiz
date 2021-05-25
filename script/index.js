@@ -16,9 +16,11 @@ function dibujaGrafica(){
         labels: fecha,
         series: [aciertos2]
     };
-    
-  new Chartist.Line('.ct-chart', data);
-  
+    var options = {
+        width: 300,
+        height: 200
+    };
+  new Chartist.Line('.ct-chart', data, options);
 }
 
 function addDate (){
