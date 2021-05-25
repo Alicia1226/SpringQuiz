@@ -26,7 +26,7 @@ body {
 input[type="radio"]:checked+label{ 
   background:#e7e7e7 ;
   color: black;
-  border:0.3px solid black;
+  
 } 
 
 header {
@@ -113,7 +113,9 @@ button {
   cursor: pointer;
   box-shadow: 5px 3px 8px #3b3b3b, -5px -3px 8px #ececec;
   transition: background-color 0.5s;
+  margin-bottom: 2rem;
 }
+
 button:hover {
   background-color: rgb(19, 184, 4);
 }
