@@ -67,7 +67,7 @@ let drawQuestion = (pregunta) =>{
             tagDivP.appendChild(tagLabel);
         }
 
-        let tagBN = document.createTextNode("Siguiente");
+        let tagBN = document.createTextNode("Next");
 
         let tagDF = document.createElement("div");
         tagDF.setAttribute("class","qBoton");
