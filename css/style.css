@@ -16,14 +16,26 @@ body {
   height: 100vh;
 }
 
-.box-pregunta {
+
+
+
+.box-pregunta{
   height: 100px;
 }
+
+input[type="radio"]:checked+label{ 
+  background:#e7e7e7 ;
+  color: black;
+  border:0.3px solid black;
+} 
 
 header {
   width: 100vw;
   height: 6rem;
   background-color: rgba(99, 178, 247, 0.774);
+}
+header a {
+  text-decoration: none;
 }
 
 h1 {
@@ -79,10 +91,11 @@ main {
 }
 
 .secondCard {
+  with: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2.5rem;
+  text-aling: center;
 }
 
 h2 {
@@ -118,6 +131,8 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  width: 25rem;
+  font-size: 1.5rem;
 }
 
 .qContenedor {
@@ -146,6 +161,7 @@ label {
 
 .qop0 {
   background-color: crimson;
+  
 }
 .qop1 {
   background-color: tan;
