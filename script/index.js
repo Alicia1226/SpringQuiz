@@ -1,20 +1,7 @@
-import { firebaseConfig } from './config.js'
-firebase.initializeApp(firebaseConfig);
-let db = firebase.firestore();
+import { getItem } from './script.js';
 
-
-
-let fecha = []
-let aciertos2 =  []
-
-let addItem = (array,key) => {
-  localStorage.setItem(key, JSON.stringify(array));
-};
-
-let getItem = (key) => {
-  let resultLocalStore = JSON.parse(localStorage.getItem(key));
-  return resultLocalStore;
-};
+let fecha = [];
+let aciertos2 =  [];
 
 
 function dibujaGrafica(){
@@ -37,26 +24,25 @@ function dibujaGrafica(){
 function addDate (){
     let textInner = "<ul>"
     getItem("resultados").forEach((elemento)=>{
-        textInner+="<li>"
-        textInner+=elemento.fecha
-        textInner+= " "
-        textInner+="<b>"
-        textInner+=elemento.aciertos
-        textInner+= " "
-        textInner+= "aciertos"
-        textInner+="</b>"
-        textInner+="</li>"
+        textInner+="<li>";
+        textInner+=elemento.fecha;
+        textInner+= " ";
+        textInner+="<b>";
+        textInner+=elemento.aciertos;
+        textInner+= " ";
+        textInner+= "aciertos";
+        textInner+="</b>";
+        textInner+="</li>";
     })
-    textInner+= "</ul>"
-    return textInner 
+    textInner+= "</ul>";
+    return textInner;
 }
+
 function dibujaLista() {
-    document.querySelector('.lista').innerHTML = addDate()
+    document.querySelector('.lista').innerHTML = addDate();
 }
 
 if (getItem("resultados") !== null){
-    dibujaGrafica()
-    dibujaLista()
+    dibujaGrafica();
+    dibujaLista();
 }
-
- 
