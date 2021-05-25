@@ -1,3 +1,9 @@
+import { firebaseConfig } from './config.js'
+firebase.initializeApp(firebaseConfig);
+let db = firebase.firestore();
+
+
+
 let fecha = []
 let aciertos2 =  []
 
@@ -23,7 +29,9 @@ function dibujaGrafica(){
         labels: fecha,
         series: [aciertos2]
     };
+    
   new Chartist.Line('.ct-chart', data);
+  
 }
 
 function addDate (){
