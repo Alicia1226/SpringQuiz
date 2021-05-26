@@ -5,13 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/normalize.css" />
-    
-    <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css"
-    />
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    
 
     <title>Document</title>
   </head>
@@ -38,11 +33,12 @@
           <h2>Your stats</h2>
         </div>
         <div class="grafica">
-          <div class="ct-chart ct-perfect-fourth" id="chart1"></div>
+          <canvas id="myChart"></canvas>
           <div class="lista"></div>
         </div>
       </div>
     </main>
     <script type="module" src="./script/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </body>
 </html>
