@@ -16,12 +16,35 @@ function dibujaGrafica(){
         labels: fecha,
         series: [aciertos2]
     };
-    var options = {
+    let options = {
         width: 300,
-        height: 200
+        height: 200,
+        axisY: {
+            onlyInteger: true,
+            scaleMinSpace: 40,
+            type: Chartist.FixedScaleAxis, // Escala en el eje : Auto, Fixed,Step
+            ticks: years,
+        }
     };
-  new Chartist.Line('.ct-chart', data, options);
-}
+    new Chartist.Line('.ct-chart', data, options);
+};;
+
+
+
+//     var options = {
+//         width: 300,
+//         height: 200,
+//             }
+//             axisY: {
+//                 onlyInteger: true,
+//                 scaleMinSpace: 40,
+//                 type: Chartist.FixedScaleAxis, // Escala en el eje : Auto, Fixed,Step
+//                 ticks: aciertos,
+//             }
+            
+//     };
+//   new Chartist.Line('.ct-chart', data, options);
+
 
 function addDate (){
     let textInner = "<ul>"
