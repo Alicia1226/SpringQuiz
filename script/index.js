@@ -12,16 +12,44 @@ function dibujaGrafica(){
         console.log(datos.aciertos)
     })
 
-    let data ={
+    const data = {
         labels: fecha,
-        series: [aciertos2]
-    };
-    var options = {
-        width: 300,
-        height: 200
-    };
-  new Chartist.Line('.ct-chart', data, options);
-}
+        datasets: [{
+          label: 'Scores',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: aciertos2,
+        }]
+      };
+
+    const config = {
+        type: 'line',
+        data,
+        options: {
+          scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Aciertos'
+                }
+            },
+            x: {
+              beginAtZero: true,
+              title: {
+                  display: true,
+                  text: 'fecha'
+              }   
+        }
+      }
+        }
+      };
+      var myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+};
+
 
 function addDate (){
     let textInner = "<ul>"
