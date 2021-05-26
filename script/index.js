@@ -48,8 +48,8 @@ function dibujaGrafica(){
         document.getElementById('myChart'),
         config
       );
-   
-}
+};
+
 
 function addDate (){
     let textInner = "<ul>"
