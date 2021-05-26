@@ -12,15 +12,32 @@ function dibujaGrafica(){
         console.log(datos.aciertos)
     })
 
-    let data ={
-        labels: fecha,
-        series: [aciertos2]
-    };
-    var options = {
-        width: 300,
-        height: 200
-    };
-  new Chartist.Line('.ct-chart', data, options);
+    const config = {
+        type: 'line',
+        data,
+        options: {
+          scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Aciertos'
+                }
+            },
+            x: {
+              beginAtZero: true,
+              title: {
+                  display: true,
+                  text: 'fecha'
+              }
+        }
+      }
+        }
+      };
+      var myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
 }
 
 function addDate (){
@@ -44,7 +61,3 @@ function dibujaLista() {
     document.querySelector('.lista').innerHTML = addDate();
 }
 
-if (getItem("resultados") !== null){
-    dibujaGrafica();
-    dibujaLista();
-}

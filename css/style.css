@@ -268,3 +268,13 @@ ul {
     padding-bottom: 40%;
   }
 }
+
+@media only screen and (min-width: 1025px){
+  .mainCard {
+    width: 70rem;
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    
+  }
+}
