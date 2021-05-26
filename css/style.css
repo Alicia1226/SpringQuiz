@@ -273,7 +273,7 @@ ul {
     width: 70rem;
     margin: 2rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     
   }
 }
