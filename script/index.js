@@ -12,6 +12,16 @@ function dibujaGrafica(){
         console.log(datos.aciertos)
     })
 
+    const data = {
+        labels: fecha,
+        datasets: [{
+          label: 'Scores',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: aciertos2,
+        }]
+      };
+
     const config = {
         type: 'line',
         data,
@@ -29,7 +39,7 @@ function dibujaGrafica(){
               title: {
                   display: true,
                   text: 'fecha'
-              }
+              }   
         }
       }
         }
@@ -38,7 +48,8 @@ function dibujaGrafica(){
         document.getElementById('myChart'),
         config
       );
-}
+};
+
 
 function addDate (){
     let textInner = "<ul>"
@@ -61,3 +72,7 @@ function dibujaLista() {
     document.querySelector('.lista').innerHTML = addDate();
 }
 
+if (getItem("resultados") !== null){
+    dibujaGrafica();
+    dibujaLista();
+}
