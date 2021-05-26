@@ -12,7 +12,6 @@ html {
 }
 
 body {
-  /* background-color: rgb(181, 217, 248); */
   height: 100%;
 }
 
@@ -23,7 +22,6 @@ body {
 input[type="radio"]:checked+label{ 
   background:#e7e7e7 ;
   color: black;
-
 } 
 
 header {
@@ -31,6 +29,7 @@ header {
   height: 6rem;
   background-color: rgba(99, 178, 247, 0.774);
 }
+
 header a {
   text-decoration: none;
 }
@@ -47,19 +46,12 @@ main {
   flex-direction: column;
   align-items: center;
 }
+
 .wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-
-/* .topCard {
-  background-color: whitesmoke;
-  border-radius: 12px;
-  width: 30rem;
-  margin-top: 40px;
-  box-shadow: 0px 0px 5px 1px lightgray;
-} */
 
 .lowCard {
   background-color: whitesmoke;
@@ -120,6 +112,7 @@ button {
 button:hover {
   background-color: rgb(19, 184, 4);
 }
+
 .results {
   position: relative;
   margin-top: 2.5rem;
@@ -179,6 +172,7 @@ label {
   display: flex;
   justify-content: flex-end;
 }
+
 .bar {
   background-color: black;
   width: 0.4rem;
@@ -194,12 +188,14 @@ label {
   margin-top: 5%;
   margin-left: 20%;
 }
+
 .results p:nth-child(3) {
   font-size: 5.5rem;
   position: absolute;
   margin-top: -25%;
   margin-left: 50%;
 }
+
 .parrafo {
   font-size: 2rem;
 }
@@ -211,6 +207,7 @@ ul {
 
 /*  <--------------@Media queris@------------> */
 @media only screen and (min-width: 768px) {
+
   header {
     width: 100vw;
     height: 8rem;
@@ -225,7 +222,6 @@ ul {
   .wrapper {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
   }
   .mainCard {
@@ -241,6 +237,7 @@ ul {
   }
 
   .secondCard {
+    width: 100%;
     display: flex;
     align-items: center;
     margin: 2.5rem;
@@ -264,9 +261,6 @@ ul {
     font-size: 2.2rem;
   }
 
-  .ct-perfect-fourth:before{
-    padding-bottom: 40%;
-  }
 }
 @media only screen and (min-width: 1025px){
   .mainCard {
@@ -274,6 +268,6 @@ ul {
     margin: 2rem;
     display: flex;
     flex-direction: column;
-    
+    align-items: center;
   }
 }
