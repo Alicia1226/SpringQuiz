@@ -8,5 +8,8 @@ let getItem = (key) => {
 };
 
 
+////////Añadir Keys aqui abajo
 
+
+///////////////////////////////
 export {addItem, getItem, firebaseConfig }
