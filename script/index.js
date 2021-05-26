@@ -12,38 +12,43 @@ function dibujaGrafica(){
         console.log(datos.aciertos)
     })
 
-    let data ={
+    const data = {
         labels: fecha,
-        series: [aciertos2]
-    };
-    let options = {
-        width: 300,
-        height: 200,
-        axisY: {
-            onlyInteger: true,
-            scaleMinSpace: 40,
-            type: Chartist.FixedScaleAxis, // Escala en el eje : Auto, Fixed,Step
-            ticks: years,
+        datasets: [{
+          label: 'Scores',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: aciertos2,
+        }]
+      };
+
+    const config = {
+        type: 'line',
+        data,
+        options: {
+          scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Aciertos'
+                }
+            },
+            x: {
+              beginAtZero: true,
+              title: {
+                  display: true,
+                  text: 'fecha'
+              }   
         }
-    };
-    new Chartist.Line('.ct-chart', data, options);
-};;
-
-
-
-//     var options = {
-//         width: 300,
-//         height: 200,
-//             }
-//             axisY: {
-//                 onlyInteger: true,
-//                 scaleMinSpace: 40,
-//                 type: Chartist.FixedScaleAxis, // Escala en el eje : Auto, Fixed,Step
-//                 ticks: aciertos,
-//             }
-            
-//     };
-//   new Chartist.Line('.ct-chart', data, options);
+      }
+        }
+      };
+      var myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+};
 
 
 function addDate (){
