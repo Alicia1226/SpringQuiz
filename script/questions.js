@@ -1,4 +1,4 @@
-import { addItem } from './script.js';
+import { addItem, firebaseConfig } from './script.js';
 
 let preguntaNum = 0;
 let numAciertos = 0;

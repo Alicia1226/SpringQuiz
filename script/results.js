@@ -1,4 +1,4 @@
-import { addItem, getItem } from './script.js';
+import { addItem, getItem, firebaseConfig } from './script.js';
 
 let aciertos=[];
 

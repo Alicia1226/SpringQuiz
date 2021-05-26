@@ -7,4 +7,6 @@ let getItem = (key) => {
     return resultLocalStore;
 };
 
-export {addItem, getItem}
+
+
+export {addItem, getItem, firebaseConfig }

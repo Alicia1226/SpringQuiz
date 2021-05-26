@@ -1,4 +1,4 @@
-import { getItem } from './script.js';
+import { getItem, firebaseConfig } from './script.js';
 
 let fecha = [];
 let aciertos2 =  [];
