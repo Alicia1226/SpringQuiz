@@ -16,7 +16,7 @@ let getFechaHora = () => {
     return fechaFinal;
 }
 
-function readAll(){
+/* function readAll(){
 
     db.collection("quizUsuarios").where("id", "=", "juan").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -26,14 +26,26 @@ console.log(doc.data().id,doc.data().numAciertos,doc.data().resultados)
         });
     });
 
-}
+} */
 readAll()
 
-function returnUser(id) {
-    
-
-
-  }
+function readResult(idResult) {
+    db
+        .collection("quizUsuarios")
+        .doc(idResult)
+        .get()
+        .then((doc) => {
+            if (doc.exists) {
+                document.getElementById("number1").innerHTML = doc.data().resultados
+                document.getElementById("nuember2").innerHTML = doc.data().numPreguntas
+            } else {
+                console.log("No such document!");
+            }
+        })
+        .catch((error) => {
+            console.log("Error getting document:", error);
+        });
+}
 
 let objAciertos = (numAciertos) => {
     let obj = {};
