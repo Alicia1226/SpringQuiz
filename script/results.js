@@ -2,6 +2,8 @@ import { addItem, getItem, firebaseConfig } from './script.js';
 
 let aciertos=[];
 
+let user = 'david'
+
 const result1 = document.getElementById("number1");
 const result2 = document.getElementById("number2");
 firebase.initializeApp(firebaseConfig);
@@ -16,38 +18,41 @@ let getFechaHora = () => {
     return fechaFinal;
 }
 
-/* function readAll(){
+function getResultados(doc){
 
-    db.collection("quizUsuarios").where("id", "=", "juan").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            //console.log(`${doc.id} => ${doc.data().}`);
-
-console.log(doc.data().id,doc.data().numAciertos,doc.data().resultados)
-        });
-    });
-
-} */
-readAll()
-
-function readResult(idResult) {
-    db
-        .collection("quizUsuarios")
-        .doc(idResult)
-        .get()
-        .then((doc) => {
-            if (doc.exists) {
-                document.getElementById("number1").innerHTML = doc.data().resultados
-                document.getElementById("nuember2").innerHTML = doc.data().numPreguntas
-            } else {
-                console.log("No such document!");
-            }
+    let quizRef = db.collection("quizUsuarios").doc(doc)
+    return new Promise ((resolve,reject)=>{
+      quizRef.get().then((doc) => {
+        resolve (doc.data().numAciertos)
+      
         })
-        .catch((error) => {
-            console.log("Error getting document:", error);
-        });
-}
+  
+    })
+    
+  }
+  function getIddoc(usuario) {
+    let usersRef = db.collection("quizUsuarios");
+    let query = usersRef.where("id", "==", usuario);
+  
+    return new Promise((resolver, rechazar) => {
+      query
+        .get()
+        .then((querySnapshot) => {
+          if (!querySnapshot.empty) {
+            querySnapshot.forEach((doc) => {
+              // doc.data() is never undefined for query doc snapshots
+              resolver(doc.id);
+            });
+          } else {
+            resolver(querySnapshot.empty);
+          }
+        })
+        .then((x) => x);
+    });
+  }
 
-let objAciertos = (numAciertos) => {
+
+  let objAciertos = (numAciertos) => {
     let obj = {};
     obj.fecha = getFechaHora();
     obj.aciertos = numAciertos;
@@ -59,6 +64,15 @@ function paintResults(data1, data2) {
     result2.innerHTML = data2;
 }
 
+
+getIddoc(user)
+  .then((doc)=>{
+      getResultados(doc)
+       .then((score)=>{
+           paintResults(score,'10')
+       })
+    })
+  
 /* if (getItem("resultados") == null){
     aciertos.push(objAciertos(getItem("numAciertos")));
     addItem(aciertos,"resultados");
@@ -68,7 +82,7 @@ function paintResults(data1, data2) {
     addItem(sumaData,"resultados");
 } */
 
-paintResults(getItem("numAciertos"), "10");
+/* paintResults(getItem("numAciertos"), "10"); */
 
 document.getElementById("boton").addEventListener("click", (e) => {
     window.location.href = "../index.html";

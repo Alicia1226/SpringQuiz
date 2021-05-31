@@ -2,12 +2,12 @@ import { getItem, firebaseConfig } from "./script.js";
 
 let fecha = [];
 let aciertos2 = [];
+let user = 'pepe'
 
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
 /* console.log(query) */
-
 function getIddoc(usuario) {
   let usersRef = db.collection("quizUsuarios");
   let query = usersRef.where("id", "==", usuario);
@@ -28,6 +28,7 @@ function getIddoc(usuario) {
       .then((x) => x);
   });
 }
+
 
 
 function addUsers (usuarios){
@@ -59,7 +60,7 @@ function updateUsers (numAciertos,resultados,doc){
   })
 
 }
-let user = 'pepe'
+
 getIddoc(user)
   .then((x) => {
     if(x==true){
